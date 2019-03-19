@@ -27,6 +27,7 @@ git clone
 * [Bootstrap](https://getbootstrap.com/)
 * [jQuery](https://jquery.com/)
 * [XAMPP](https://www.apachefriends.org/index.html)
+* [PHP](https://secure.php.net/)
 
 ## Authors
 
