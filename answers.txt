@@ -1,0 +1,30 @@
+1. How long did you spend completing the assignment? How (if at all) would you change your solution if you had more time?
+
+In total I spent approximately 4-5 hours on the project. This was split up over a number of days due to university assignments. Although I am able to show the user if
+a lodge is closed, I was unable to find any results which returned opening or closing times, this may be due to the times I was working on the project. Because of this I was
+unable to display opening times of lodges correctly - if given more time I'd have run more testing on different searches to find opening times correctly and display them as expected.
+I'd have also spent some more time working on the readme file itself, as this is the first time I've needed to write one.
+
+
+
+2. Can you describe a feature (perhaps with some reference code) that exists in your chosen programming language that you found particularly useful?
+
+I find using curl requests within PHP extremely useful. This isn't because of it's functionality as there are many ways to perform requests, but curl makes it extremely
+easy to build and send a request.
+
+As an example, I was able to build a GET request and add any optional flags simply by creating an array:
+
+curl_setopt_array( $curl, [
+    CURLOPT_URL             => 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
+                                . $location . '&radius=1000&fields=contact&type=lodging&keyword=surf&key=AIzaSyCjg4eZiH1RXlPbiw6dlni3pb7rKh4kabo',
+    CURLOPT_RETURNTRANSFER  => true, //Return contents as var
+    CURLOPT_FOLLOWLOCATION  => true, //Follow redirects
+] );
+
+
+
+3. How would you track down a performance issue with yours or another developer's code?
+
+I'd begin by looking into the functionality of the code, what it does and what it's supposed to do. By doing this it may be easier to gauge where performance issues could occur,
+for example, if the functionality was to request some data from the database and return it to the user it could be likely the performance issue is caused by an inefficient database query
+or logic surrounding the return of the data. There are also a number of tools available I would make use of where possible, such as using xDebug with PHP to profile PHP scripts and find bottlenecks.

@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/images/2000-surfing.jpg");
+    height: 100vh;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.container {
+    height: 100vh;
+}
+
+.landing-container__inner {
+    position: relative;
+    height: 50%;
+    transform: translateY( -50% );
+    top: 50%;
+    justify-content: center;
+}
+
+.landing-card {
+    position: relative;
+    top: 50%;
+    transform: translateY( -50% );
+}
+
+.search-container {
+    height: 100vh;
+    display: none;
+}
+
+.search-container__inner {
+    position: relative;
+    height: 80%;
+    transform: translateY( -50% );
+    top: 50%;
+    justify-content: center;
+}
+
+.search-card {
+    position: relative;
+    top: 50%;
+    transform: translateY( -50% );
+}
+
+#card__map {
+    height: 35vh;
+}
+
+.search-input {
+    display: inline;
+}
+
+.form-control {
+    width: 40%; !important
+}
+
+.btn-search {
+    float: right;
+    width: 25%;
+    margin-top: 2%;
+}
+
+.results-container {
+    height: 100vh;
+    display: none;
+}
+
+.results-container__inner {
+    position: relative;
+    height: 80%;
+    transform: translateY( -50% );
+    top: 50%;
+    justify-content: center;
+}
+
+#results_body {
+    padding: 0;
+}
+
+.error__text {
+    font-size: .8em;
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+.back-btn {
+    height: 100%;
+}
+
+.card-header {
+    padding: .5rem; !important
+    text-align: center;
+}
+
+.card-header__text {
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+}
+
+.place__container {
+    height: auto;
+    border-bottom: 1px solid #e4e4e4;
+    padding: .5rem;
+}
+
+.place-name {
+    font-weight: 600;
+    font-size: 1em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.closed {
+    float: right;
+}
