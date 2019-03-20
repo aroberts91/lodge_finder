@@ -19,8 +19,32 @@ Install XAMPP (or LAMP environment) and clone repository into root projects fold
 
 cd /c/xampp/htdocs
 git clone 
+
+Update api/get_places.php and js/surf-finder.js API_KEY with your google API key
 ```
 
+## Testing
+
+To test Geolocation
+
+```
+- Once page has loaded, press get started
+- Accept browser request for geolocation
+- Wait until 'Searching' button changes to 'Find Me'
+-> Maps should now be centered to your location
+- Move maps away from location and press 'Find Me'
+-> Maps should re-center to your location
+```
+
+To test Search
+
+```
+- If you are aware of lat/long which will provide results, enter these in the correct
+input boxes or select the area on the map (this will pre-fill the inputs)
+- Otherwise, enter lat: 50.41337213508103 / long: -5.105306980850514 and press 'Search'
+-> Search should succesfully return results
+- Press back to go back to search screen.
+```
 
 ## Built With
 

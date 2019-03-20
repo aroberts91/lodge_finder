@@ -134,7 +134,7 @@ function generatePlaces( data ) {
         results +=  '<div class="place__container">' +
                         '<span class="place-name">' + place_data.name + '</span>' +
                         '<span class="place-rating">Rating: <span>' + place_data.rating + '</span></span>' +
-        place_data.open_now ? '<span class="place-opening-hours closed" style="color: red">Closed Now </span>' : '' +
+            (( place_data.open_now ) ? '<span class="place-opening-hours closed" style="color: red">Closed Now </span>' : '' ) +
 
                     '</div>'
     }
