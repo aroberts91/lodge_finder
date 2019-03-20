@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyDQeCU6fy_7ugLsVfT9jCya1yeQ8OQ3enA'; //Enter your API key here
+const API_KEY = ''; //Enter your API key here
 let map, infoWindow;
 
 function hideLandingCard() {

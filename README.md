@@ -20,7 +20,7 @@ Install XAMPP (or LAMP environment) and clone repository into root projects fold
 cd /c/xampp/htdocs
 git clone 
 
-Update api/get_places.php and js/surf-finder.js API_KEY with your google API key
+Update api/get_places.php and js/lodge-finder.js API_KEY with your google API key
 ```
 
 ## Testing

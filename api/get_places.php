@@ -1,5 +1,5 @@
 <?php
-define( 'API_KEY', 'AIzaSyDQeCU6fy_7ugLsVfT9jCya1yeQ8OQ3enA', true ); //Enter Google API key here
+define( 'API_KEY', '', true ); //Enter Google API key here
 
 function err_res( $message )
 {
