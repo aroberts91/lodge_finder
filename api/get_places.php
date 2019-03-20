@@ -1,22 +1,20 @@
 <?php
-$DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
-require_once $DOCUMENT_ROOT . '/lodge_finder/include/base.inc';
+define( 'API_KEY', 'AIzaSyDQeCU6fy_7ugLsVfT9jCya1yeQ8OQ3enA', true ); //Enter Google API key here
 
-$lat = strParam( 'lat' );
-$long = strParam( 'lng' );
-
-if( !$lat || !$long )
+function err_res( $message )
 {
     header( 'Content-Type: application/json' );
-    echo json_encode( [ 'status' => 400, 'message' => 'Missing lat/long' ] );
+    echo json_encode( [ 'status' => 400, 'message' => $message ] );
+    exit;
 }
 
-$location = $lat . ',' . $long;
+if( empty( $_REQUEST[ 'lat' ] ) || empty( $_REQUEST[ 'lng' ] ) )
+    err_res( 'Missing lat/long' );
 
 $curl = curl_init();
 curl_setopt_array( $curl, [
-    CURLOPT_URL             => 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
-                                . $location . '&radius=1000&fields=contact&type=lodging&keyword=surf&key=AIzaSyCjg4eZiH1RXlPbiw6dlni3pb7rKh4kabo',
+    CURLOPT_URL             => 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' . $_REQUEST[ 'lat' ] . ',' . $_REQUEST[ 'lng' ] .
+                                '&radius=1000&fields=contact&type=lodging&keyword=surf&key=' . API_KEY,
     CURLOPT_RETURNTRANSFER  => true, //Return contents as var
     CURLOPT_FOLLOWLOCATION  => true, //Follow redirects
 ] );
@@ -25,10 +23,7 @@ $res = curl_exec( $curl ); //Make request
 curl_close( $curl ); //Close curl handle
 
 if( !$res )
-{
-    header( 'Content-Type: application/json' );
-    echo json_encode( [ 'status' => 400, 'message' => 'Error: Request to Google Places failed' ] );
-}
+    err_res( 'Error: Request to Google Places failed' );
 
 header( 'Content-Type: application/json' );
 echo $res;

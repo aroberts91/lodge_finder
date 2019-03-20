@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <title>Surf Finder</title>
 
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/surf-finder.js"></script>
-
+    <script>
+        window.onload = function() {
+            onPageLoad();
+        }
+    </script>
 
 </head>
 <body>
@@ -35,21 +40,6 @@
                 <div id="card__map">
 
                 </div>
-                <script>
-                    var map, infoWindow;
-                    function initMap() {
-                        map = new google.maps.Map(document.getElementById('card__map'), {
-                            center: {lat: -50.000, lng: 50.000},
-                            zoom: 8
-                        });
-                        infoWindow = new google.maps.InfoWindow;
-
-                        map.addListener( 'click', ( e ) => getClickedLocation( e ) );
-                    }
-                </script>
-                <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQeCU6fy_7ugLsVfT9jCya1yeQ8OQ3enA&callback=initMap">
-                </script>
                 <div class="card-body">
                     <p id="error" class="error__text"></p>
                     <div class="search-input">

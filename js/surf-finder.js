@@ -1,3 +1,6 @@
+const API_KEY = 'AIzaSyDQeCU6fy_7ugLsVfT9jCya1yeQ8OQ3enA'; //Enter your API key here
+let map, infoWindow;
+
 function hideLandingCard() {
     $('.landing-container').fadeOut();
     $('.search-container').fadeIn();
@@ -5,14 +8,28 @@ function hideLandingCard() {
     locateUser();
 }
 
-function getClickedLocation( e ) {
-    //Get lat long of click, convert to string to shorten for the user
-    let lat = e.latLng.lat().toString();
-    let lng = e.latLng.lng().toString();
+function onPageLoad() {
+    var map_script = document.createElement( 'script' );
 
+    map_script.type='text/javascript';
+    map_script.src = 'https://maps.googleapis.com/maps/api/js?key=' + API_KEY + '&callback=initMap';
+    document.body.appendChild( map_script );
+}
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('card__map'), {
+        center: {lat: -50.000, lng: 50.000},
+        zoom: 8
+    });
+    infoWindow = new google.maps.InfoWindow;
+
+    map.addListener( 'click', ( e ) => getClickedLocation( e ) );
+}
+
+function getClickedLocation( e ) {
     //Add an extra character if lat/lng is a minus value
-    $( '#lat-input' ).val( lat );
-    $( '#lng-input' ).val( lng );
+    $( '#lat-input' ).val( e.latLng.lat().toString() );
+    $( '#lng-input' ).val( e.latLng.lng().toString() );
 }
 
 function requestPlaces() {
@@ -44,7 +61,6 @@ function requestPlaces() {
 }
 
 function locateUser() {
-    console.log( 'test' );
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         $('#locate-btn').text( 'Searching' );
@@ -107,19 +123,6 @@ function generatePlaces( data ) {
 
     let results = '';
 
-    //Display no results and return early if nothing found
-    if( data.length < 0 )
-    {
-        results +=  '<div id="no-results">' +
-                        '<p>No results to display</p>' +
-                    '</div>';
-
-        places_container.append( results );
-        return;
-    }
-
-
-
     for( let ind = 0; ind < data.length; ind++ )
     {
         let place_data = data[ ind ];
@@ -128,15 +131,12 @@ function generatePlaces( data ) {
         if( !place_data.name || !place_data.rating )
             continue;
 
-        results += '<div class="place__container">';
+        results +=  '<div class="place__container">' +
+                        '<span class="place-name">' + place_data.name + '</span>' +
+                        '<span class="place-rating">Rating: <span>' + place_data.rating + '</span></span>' +
+        place_data.open_now ? '<span class="place-opening-hours closed" style="color: red">Closed Now </span>' : '' +
 
-        results += '<span class="place-name">' + place_data.name + '</span>';
-        results += '<span class="place-rating">Rating: <span>' + place_data.rating + '</span></span>';
-
-        if( !place_data.open_now )
-            results += '<span class="place-opening-hours closed" style="color: red">Closed Now </span>';
-
-        results += '</div>'
+                    '</div>'
     }
 
     places_container.append( results );
